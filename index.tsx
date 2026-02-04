@@ -511,8 +511,8 @@ const Contact = () => {
         <section id="contact" className="py-32 px-6 md:px-20 bg-[#0C0C0C] min-h-[80vh] flex flex-col justify-between">
             <div className="max-w-4xl">
                 <h2 className="text-5xl md:text-8xl font-display font-bold leading-none mb-12">
-                    Votre vision.<br/>
-                    <span className="text-neutral-700">Ma technique.</span>
+                    Je lis chaque message.<br/>
+                    <span className="text-neutral-700">Et j'y réponds.</span>
                 </h2>
                 <p className="text-xl text-neutral-400 mt-6 max-w-2xl">
                     Prêt à passer au niveau supérieur ? Discutons de votre prochain succès numérique.

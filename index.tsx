@@ -440,7 +440,7 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
                     <p className="text-sm text-neutral-500 mt-1 uppercase tracking-wider">{project.cat}</p>
                 </div>
                 <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <ExternalLink size={20} className="text-[#E8C547]" />
+                    <ArrowRight size={20} className="text-[#E8C547]" />
                 </div>
             </div>
         </motion.div>

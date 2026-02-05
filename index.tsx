@@ -154,7 +154,7 @@ const About = () => {
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Techniquement votre partenaire.
+          Une présence web qui génère des résultats concrets.
         </motion.h2>
         <motion.div
            className="text-lg md:text-xl text-neutral-400 leading-relaxed space-y-6"

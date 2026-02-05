@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, Shield, PenTool, ArrowLeft, CheckCircle2 } from 'lucide-react';
-
-// --- Components ---
+import App from './src/App';
 
 // 1. Custom Cursor
 const CustomCursor = () => {
@@ -398,7 +395,7 @@ const WhyMe = () => {
 };
 
 // 7. Portfolio Section
-const projects = [
+const projects_visual = [
   { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" },
   { id: "laura-dauzonne", title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
   { id: "kamy-wedding", title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
@@ -407,25 +404,19 @@ const projects = [
   { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" },
 ];
 
-const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onProjectClick?: (id: string) => void }> = ({ project, index, onProjectClick }) => {
+const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number }> = ({ project, index }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
 
-    const handleClick = () => {
-      if (onProjectClick && project.id) {
-        onProjectClick(project.id);
-      }
-    };
-
     return (
-        <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
-            className="group cursor-pointer"
-            onClick={handleClick}
-        >
+        <Link to={`/projects/${project.id}`} className="block group">
+          <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
+              className="group cursor-pointer"
+          >
             <div className="relative overflow-hidden aspect-[4/3] mb-6 rounded-lg">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500" />
                 <motion.img 
@@ -443,17 +434,18 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
                     <ArrowRight size={20} className="text-[#E8C547]" />
                 </div>
             </div>
-        </motion.div>
+</motion.div>
+        </Link>
     );
 }
 
-const Portfolio = ({ onProjectClick }: { onProjectClick?: (id: string) => void }) => {
+const Portfolio = () => {
   return (
     <section id="portfolio" className="py-32 px-6 md:px-20 bg-[#0C0C0C]">
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-20">Projets Récents</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-y-24">
-            {projects.map((project, i) => (
-                <ProjectCard key={i} project={project} index={i} onProjectClick={onProjectClick} />
+            {projects_visual.map((project, i) => (
+                <ProjectCard key={i} project={project} index={i} />
             ))}
         </div>
     </section>

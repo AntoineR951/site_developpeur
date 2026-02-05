@@ -181,7 +181,7 @@ const About = () => {
             <div className="text-xs uppercase tracking-wider text-neutral-500">Projets livrés</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-[#F5F5F5] mb-1">8 ans</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#F5F5F5] mb-1">12 ans</div>
             <div className="text-xs uppercase tracking-wider text-neutral-500">D'expertise</div>
           </div>
           <div>

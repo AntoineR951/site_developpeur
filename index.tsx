@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, Shield, PenTool } from 'lucide-react';
+import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, Shield, PenTool, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 // --- Components ---
 
@@ -369,10 +369,10 @@ const ReasonItem: React.FC<{ text: string; index: number }> = ({ text, index }) 
 
 const WhyMe = () => {
     const reasons = [
-        "→ Une collaboration directe. Vous m'appelez, je réponds.",
-        "→ Une expertise pédagogique. Je traduis le technique en business.",
-        "→ Une réactivité sans faille. Vos urgences deviennent les miennes.",
-        "→ Une vision long terme. Je construis pour durer, pas pour jeter."
+        "→ Une collaboration directe.",
+        "→ Une expertise pédagogique.",
+        "→ Une réactivité sans faille.",
+        "→ Une vision long terme."
     ];
 
     return (
@@ -389,7 +389,7 @@ const WhyMe = () => {
                 
                 <div className="mt-20 pt-10 border-t border-neutral-800">
                     <p className="text-xl md:text-2xl text-[#E8C547] font-display">
-                        Je ne suis pas un simple prestataire. Je suis le partenaire technique qui fera décoller votre activité.
+                        Trouvez le partenaire technique qui fera décoller votre activité.
                     </p>
                 </div>
              </div>
@@ -399,17 +399,23 @@ const WhyMe = () => {
 
 // 7. Portfolio Section
 const projects = [
-  { title: "Creaboite", cat: "SaaS / Légal", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" },
-  { title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
-  { title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
-  { title: "Immosenart", cat: "Immobilier", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop" },
-  { title: "Aven Ice Café", cat: "Food & Beverage", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" },
-  { title: "Beeinvest", cat: "Finance", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" },
+  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" },
+  { id: "laura-dauzonne", title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
+  { id: "kamy-wedding", title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
+  { id: "immosenart", title: "Immosenart", cat: "Immobilier", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop" },
+  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" },
+  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" },
 ];
 
-const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string }; index: number }> = ({ project, index }) => {
+const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onProjectClick?: (id: string) => void }> = ({ project, index, onProjectClick }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
+
+    const handleClick = () => {
+      if (onProjectClick && project.id) {
+        onProjectClick(project.id);
+      }
+    };
 
     return (
         <motion.div
@@ -418,6 +424,7 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
             className="group cursor-pointer"
+            onClick={handleClick}
         >
             <div className="relative overflow-hidden aspect-[4/3] mb-6 rounded-lg">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500" />
@@ -440,13 +447,13 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
     );
 }
 
-const Portfolio = () => {
+const Portfolio = ({ onProjectClick }: { onProjectClick?: (id: string) => void }) => {
   return (
-    <section className="py-32 px-6 md:px-20 bg-[#0C0C0C]">
+    <section id="portfolio" className="py-32 px-6 md:px-20 bg-[#0C0C0C]">
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-20">Projets Récents</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-y-24">
             {projects.map((project, i) => (
-                <ProjectCard key={i} project={project} index={i} />
+                <ProjectCard key={i} project={project} index={i} onProjectClick={onProjectClick} />
             ))}
         </div>
     </section>

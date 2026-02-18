@@ -545,7 +545,6 @@ const Contact = () => {
                 </div>
                 <div className="flex gap-6 mt-4 md:mt-0 uppercase tracking-wider">
                     <a href="#mentions-legales" className="hover:text-[#F5F5F5] transition-colors cursor-pointer mentions-legales-link">Mentions Légales</a>
-                    <a href="#" className="hover:text-[#F5F5F5] transition-colors">Plan du site</a>
                 </div>
             </footer>
         </section>

@@ -400,9 +400,9 @@ const projects_visual = [
   { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite.jpg" },
   { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/01/avenice.jpg" },
   { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2023/03/beeinvest.jpg" },
-  { id: "laura-dauzonne", title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
-  { id: "kamy-wedding", title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
-  { id: "immosenart", title: "Immosenart", cat: "Immobilier", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop" },
+  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite10.jpg" },
+  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "http://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/01/avenice10-1.jpg" },
+  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "http://www.creation-site-internet-yerres.fr/wp-content/uploads/2023/03/beeinvest10.jpg" },
 ];
 
 const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onClick?: (id: string) => void }> = ({ project, index, onClick }) => {

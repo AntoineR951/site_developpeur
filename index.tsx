@@ -960,10 +960,68 @@ const MentionsLegales = ({ onBack }: { onBack: () => void }) => {
           <span>Retour</span>
         </button>
         <h1 className="text-4xl md:text-5xl font-display font-bold mb-12">Mentions Légales</h1>
-        {/* COLLEZ VOS MENTIONS LEGALES ICI - remplacez le texte ci-dessous */}
-        <div className="prose prose-invert prose-lg max-w-none space-y-6 text-neutral-300 leading-relaxed mentions-legales-content">
-          <p>Cette page est en cours de mise a jour. Veuillez revenir bientot pour consulter les mentions legales completes.</p>
-        </div>
+        <div className="text-neutral-300 leading-relaxed mentions-legales-content [&_h4]:text-2xl [&_h4]:font-bold [&_h4]:text-[#F5F5F5] [&_h4]:mt-10 [&_h4]:mb-4 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_li]:mb-1" dangerouslySetInnerHTML={{ __html: `
+<h4>Glossaire</h4>
+<ul>
+<li><strong>Informations personnelles :</strong> &laquo; les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent &raquo; (article 4 de la loi n&deg; 78-17 du 6 janvier 1978)</li>
+<li><strong>Utilisateur :</strong> Internaute se connectant, utilisant le site www.creation-site-internet-yerres.fr</li>
+</ul>
+
+<h4>Mentions l&eacute;gales</h4>
+<p>En vertu de l'article 6 de la loi n&deg; 2004-575 du 21 juin 2004 pour la confiance dans l'&eacute;conomie num&eacute;rique, il est pr&eacute;cis&eacute; aux utilisateurs du site www.creation-site-internet-yerres.fr l'identit&eacute; des diff&eacute;rents intervenants dans le cadre de sa r&eacute;alisation et de son suivi :</p>
+<ul>
+<li><strong>H&eacute;bergeur :</strong> OVH &ndash; 2 rue Kellermann &ndash; 59100 ROUBAIX &ndash; France</li>
+<li><strong>Mail responsable publication :</strong> contact (at) creation-site-internet-yerres.fr</li>
+<li><strong>Adresse :</strong> 10 rue de Penthi&egrave;vre 75008 Paris</li>
+<li><strong>Date d'immatriculation :</strong> 01/01/2025 (auparavant immatricul&eacute; en entreprise individuelle avec le SIREN 532 828 324)</li>
+<li><strong>Num&eacute;ro RCS :</strong> Paris B 939 370 300</li>
+<li><strong>Num&eacute;ro de TVA intracommunautaire :</strong> FR79939370300</li>
+<li><strong>Siret :</strong> 93937030000013</li>
+<li><strong>Nom de l'entreprise :</strong> ABC PROGRAMMATION</li>
+<li><strong>Responsable publication, cr&eacute;ateur et propri&eacute;taire du site :</strong> Antoine Rousseau &ndash; contact (at) creation-site-internet-yerres.fr</li>
+</ul>
+
+<h4>Propri&eacute;taire du site</h4>
+<p>Antoine Rousseau, propri&eacute;taire et cr&eacute;ateur du site, se r&eacute;serve le droit de modifier et de mettre &agrave; jour, sans pr&eacute;avis, les pr&eacute;sentes Conditions G&eacute;n&eacute;rales et tous les &eacute;l&eacute;ments, produits ou services pr&eacute;sent&eacute;s sur le site.</p>
+<p>Antoine Rousseau est enregistr&eacute; aupr&egrave;s de l'INSEE sous le num&eacute;ro de SIRET 532 828 324 00030 poss&egrave;de le statut d'entrepreneur individuel et est domicili&eacute; &agrave; 10 rue de Penthi&egrave;vre 75008 Paris.</p>
+
+<h4>Informations personnelles collect&eacute;es</h4>
+<p>En France, les donn&eacute;es personnelles sont notamment prot&eacute;g&eacute;es par la loi n&deg; 78-87 du 6 janvier 1978, la loi n&deg; 2004-801 du 6 ao&ucirc;t 2004, l'article L. 226-13 du Code p&eacute;nal et la Directive Europ&eacute;enne du 24 octobre 1995.</p>
+<p>En tout &eacute;tat de cause www.creation-site-internet-yerres.fr ne collecte des informations personnelles relatives &agrave; l'utilisateur (nom, adresse &eacute;lectronique, coordonn&eacute;es t&eacute;l&eacute;phoniques) que lors de l'utilisation du formulaire de contact pr&eacute;sent sur la page de contact du site. L'utilisateur fournit ces informations en toute connaissance de cause, notamment lorsqu'il proc&egrave;de par lui-m&ecirc;me &agrave; leur saisie.</p>
+<p>Les informations transmises via le formulaire de contact ne sont pas enregistr&eacute;es dans une base de donn&eacute;es et ne font l'objet d'aucun traitement, elles sont simplement transmises par mail au propri&eacute;taire du site pour permettre &agrave; la personne qui fait la demande d'&ecirc;tre recontact&eacute;e et uniquement &agrave; cette fin. Ces informations sont conserv&eacute;es dans la boite mail du propri&eacute;taire du site pendant une dur&eacute;e de 12 mois. Vous disposez d'un droit de modification et de suppression des donn&eacute;es vous concernant (art. 34 de la loi &laquo; Informatique et Libert&eacute;s &raquo;). Pour l'exercer, adressez vous &agrave; contact (at) creation-site-internet-yerres.fr.</p>
+<p>Aucune information personnelle de l'utilisateur du site n'est :</p>
+<ul>
+<li>&eacute;chang&eacute;e, transf&eacute;r&eacute;e, c&eacute;d&eacute;e ou vendue sur un support quelconque &agrave; des tiers ;</li>
+<li>publi&eacute;e &agrave; l'insu de l'utilisateur ;</li>
+<li>collect&eacute;e &agrave; l'insu de l'utilisateur.</li>
+</ul>
+<p>Le site n'est pas d&eacute;clar&eacute; &agrave; la CNIL car il ne recueille pas d'informations personnelles.</p>
+
+<h4>Cookies</h4>
+<p>Un &laquo; Cookie &raquo; permet l'identification de l'utilisateur, la personnalisation de sa consultation du site et l'acc&eacute;l&eacute;ration de la mise en page du site gr&acirc;ce &agrave; l'enregistrement d'un l&eacute;ger fichier de donn&eacute;es sur son ordinateur. L'utilisateur reconna&icirc;t &ecirc;tre inform&eacute; de cette pratique et autorise www.creation-site-internet-yerres.fr &agrave; y proc&eacute;der. En tout &eacute;tat de cause www.creation-site-internet-yerres.fr s'engage &agrave; ne jamais communiquer le contenu de ces &laquo; Cookies &raquo; &agrave; des tierces personnes, sauf en cas de r&eacute;quisition l&eacute;gale. L'utilisateur peut refuser l'enregistrement de &laquo; Cookies &raquo; ou configurer son navigateur pour &ecirc;tre pr&eacute;venu pr&eacute;alablement &agrave; l'acception les &laquo; Cookies &raquo;.</p>
+
+<h4>Marques</h4>
+<p>Les marques et logos contenus dans le site sont d&eacute;pos&eacute;s par www.creation-site-internet-yerres.fr. A ce titre, toute personne proc&eacute;dant &agrave; leurs repr&eacute;sentations, reproductions, imbrications, diffusions et rediffusions encourt les sanctions pr&eacute;vues aux articles L. 713-2 et suivants du Code de la propri&eacute;t&eacute; intellectuelle.</p>
+
+<h4>Observations et suggestions</h4>
+<p>Il est possible de transmettre des observations et des suggestions au responsable du site &agrave; l'adresse &eacute;lectronique contact (at) creation-site-internet-yerres.fr.</p>
+
+<h4>Les principales lois concern&eacute;es</h4>
+<p>Loi n&deg; 78-87 du 6 janvier 1978, notamment modifi&eacute;e par la loi n&deg; 2004-801 du 6 ao&ucirc;t 2004 relative &agrave; l'informatique, aux fichiers et aux libert&eacute;s. Loi n&deg; 2004-575 du 21 juin 2004 pour la confiance dans l'&eacute;conomie num&eacute;rique.</p>
+
+<h4>Propri&eacute;t&eacute; intellectuelle et contrefaçons</h4>
+<p>Antoine Rousseau, propri&eacute;taire du site, est propri&eacute;taire des droits de propri&eacute;t&eacute; intellectuelle ou d&eacute;tient les droits d'usage sur tous les &eacute;l&eacute;ments accessibles sur le site, notamment les textes, images, graphismes, logo, ic&ocirc;nes, sons, logiciels.</p>
+<p>Toute reproduction, repr&eacute;sentation, modification, publication, adaptation de tout ou partie des &eacute;l&eacute;ments du site, quel que soit le moyen ou le proc&eacute;d&eacute; utilis&eacute;, est interdite, sauf autorisation &eacute;crite pr&eacute;alable de Antoine Rousseau.</p>
+<p>Toute exploitation non autoris&eacute;e du site ou de l'un quelconque des &eacute;l&eacute;ments qu'il contient sera consid&eacute;r&eacute;e comme constitutive d'une contrefa&ccedil;on et poursuivie conform&eacute;ment aux dispositions des articles L.335-2 et suivants du Code de Propri&eacute;t&eacute; Intellectuelle.</p>
+
+<h4>Limitations de responsabilit&eacute;</h4>
+<p>Antoine Rousseau ne pourra &ecirc;tre tenu responsable des dommages directs et indirects caus&eacute;s au mat&eacute;riel de l'utilisateur, lors de l'acc&egrave;s au site www.creation-site-internet-yerres.fr, et r&eacute;sultant soit de l'utilisation d'un mat&eacute;riel ne r&eacute;pondant pas aux sp&eacute;cifications indiqu&eacute;es, soit de l'apparition d'un bug ou d'une incompatibilit&eacute;.</p>
+<p>Antoine Rousseau ne pourra &eacute;galement &ecirc;tre tenu responsable des dommages indirects (tels par exemple qu'une perte de march&eacute; ou perte d'une chance) cons&eacute;cutifs &agrave; l'utilisation du site.</p>
+<p>Antoine Rousseau se r&eacute;serve le droit de supprimer, sans mise en demeure pr&eacute;alable, tout contenu publi&eacute; en tant que commentaire qui contreviendrait &agrave; la l&eacute;gislation applicable en France, en particulier aux dispositions relatives &agrave; la protection des donn&eacute;es.</p>
+
+<h4>Droit applicable et attribution de juridiction</h4>
+<p>Le site www.creation-site-internet-yerres.fr &eacute;tant h&eacute;berg&eacute; par un h&eacute;bergeur fran&ccedil;ais, tout litige en relation avec son utilisation est soumis au droit fran&ccedil;ais. Il est fait attribution exclusive de juridiction aux tribunaux comp&eacute;tents de Paris.</p>
+` }} />
       </div>
     </div>
   );

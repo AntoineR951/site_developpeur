@@ -456,53 +456,70 @@ const Portfolio = ({ onProjectClick }: { onProjectClick: (id: string) => void })
   );
 };
 
-// 8. Testimonials
-const Testimonials = () => {
-    const testimonials = [
-        { text: "Monsieur Rousseau est très compétent. Il maîtrise très bien son travail.", author: "Sofiane A." },
-        { text: "Enfin un prestataire sérieux et disponible. Je recommande sans hésiter.", author: "Laurent G." },
-        { text: "Site livré rapidement, exactement comme je l'imaginais.", author: "Julie P." }
-    ];
+// 8. Testimonials - Marquee
+const allTestimonials = [
+    { text: "Société très sérieuse et Mr Rousseau est très compétent, il maîtrise très bien son travail (digital, outil informatique et référencement marketing). Je recommande sans hésitation !", author: "Client Google" },
+    { text: "Le professionnalisme, la rigueur et disponibilité de Monsieur Rousseau sont autant d'atouts pour mener à bien la création de site confiée. Il a su adapter les outils à ma demande et résoudre les difficultés techniques. Je recommande ses services.", author: "Client Google" },
+    { text: "Merci beaucoup pour votre diligence, votre patience et disponibilité pour régler les différents types de problèmes de notre site internet. J'apprécie énormément !", author: "Client Google" },
+    { text: "Bravo, il a réalisé un site internet pour notre entreprise, merci à vous", author: "Client Google" },
+    { text: "Bravo à vous, nous l'avions contacté pour la création d'un site pour notre société. Cela a été réalisé avec un grand professionnalisme", author: "Client Google" },
+    { text: "Bravo, professionnel très réactif et à l'écoute ! Notre site internet a été réalisé en un rien de temps :) merci à vous", author: "Client Google" },
+    { text: "Antoine a réalisé deux sites pour mon compte, celui de mon activité libérale puis mon site personnel. Le travail réalisé est de grande qualité, tant au niveau de la technique que de l'esthétisme du site. De plus, sérieux, Antoine est d'une grande réactivité et à l'écoute. Je le recommande sans hésiter.", author: "Client Google" },
+    { text: "Prestataire sérieux, professionnel et rigoureux ! Très satisfaite des services de Mr Rousseau. Il a su comprendre nos besoins et a pu nous livrer un site sur mesure. Toujours disponible, son professionnalisme et sa rigueur sont très appréciés. Je recommande fortement ses services !", author: "Client Google" },
+    { text: "Mr Rousseau a été très réactif pour la création de notre site internet. Il est très à l'écoute et toujours très disponible. Je le recommande sans problème!", author: "Client Google" },
+    { text: "Antoine Rousseau est un développeur très sérieux qui m'a construit mon site en 2022 et qui fonctionne très bien. En outre, il assure un suivi de qualité. Je recommande ses services en toute confiance.", author: "Client Google" },
+    { text: "Antoine a su être à l'écoute, réactif et source de propositions. Je recommande. Il a réalisé pour moi un site propre et dans un très bon délai d'exécution", author: "Client Google" },
+    { text: "Très bonne expérience avec Antoine Rousseau à propos de la création de mon site internet. Il m'a donné de bons conseils pour optimiser la visibilité du site et est réactif lors d'une demande de modification quelconque. Je recommande sans soucis ce professionnel.", author: "Client Google" },
+    { text: "Très satisfait des services de Mr Rousseau. Il est une personne qualifiée et s'est montré très disponible lors de la création de mon site web. Je recommande fortement ses services!", author: "Client Google" },
+    { text: "Très satisfait de la prestation de Mr Rousseau. Il suit mon site depuis 2017. Une personne très technique, très professionnelle et disponible. Je vous recommande ses services.", author: "Client Google" },
+    { text: "3i3s-Europa est et sera d'une reconnaissance sans faille pour Mr Antoine ROUSSEAU. Non seulement il a sauvé notre site piraté mais en plus il l'a rajeuni et l'a équipé de nouvelles fonctionnalités. Sa disponibilité est impressionnante, son professionnalisme irréprochable et le coût de ses prestations nettement inférieur au marché.", author: "3i3s-Europa" },
+    { text: "Monsieur Rousseau a parfaitement répondu à mon attente, tant dans le contenu du site que dans sa forme, grâce à une grande écoute et beaucoup de réactivité à chaque étape de sa création. J'ai désormais en première page de Google une vitrine très claire et ergonomique pour mon activité.", author: "Client Google" },
+    { text: "Mr ROUSSEAU c'est la valeur sûre, l'assurance d'un travail de qualité et ceci dans les plus brefs délais. J'ai été frappée par son professionnalisme lors de la conception de mon site de coaching parental Ghisly Conseil. Je vous le recommande vivement", author: "Ghisly Conseil" },
+];
 
-    const [current, setCurrent] = useState(0);
+const row1 = allTestimonials.slice(0, 9);
+const row2 = allTestimonials.slice(9);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrent(prev => (prev + 1) % testimonials.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
-
+const MarqueeRow = ({ items, direction = 'left', speed = 40 }: { items: typeof allTestimonials; direction?: 'left' | 'right'; speed?: number }) => {
+    const duplicated = [...items, ...items];
     return (
-        <section className="py-32 px-6 md:px-20 bg-[#141414] flex flex-col items-center text-center">
-            <Star className="text-[#E8C547] w-8 h-8 mb-8" fill="#E8C547" />
-            <div className="h-40 md:h-32 w-full max-w-3xl relative">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={current}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute inset-0 flex flex-col items-center justify-center"
-                    >
-                        <p className="text-xl md:text-3xl font-display font-light leading-relaxed mb-6">
-                            "{testimonials[current].text}"
-                        </p>
-                        <cite className="text-sm uppercase tracking-widest text-[#E8C547] not-italic">
-                            — {testimonials[current].author}, 2024
-                        </cite>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-            <div className="flex gap-2 mt-8">
-                {testimonials.map((_, i) => (
-                    <button 
-                        key={i} 
-                        onClick={() => setCurrent(i)}
-                        className={`w-2 h-2 rounded-full transition-colors ${i === current ? 'bg-[#E8C547]' : 'bg-neutral-700'}`} 
-                    />
+        <div className="relative overflow-hidden group">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#141414] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#141414] to-transparent z-10 pointer-events-none" />
+            <motion.div
+                className="flex gap-6 w-max"
+                animate={{ x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%'] }}
+                transition={{ x: { repeat: Infinity, repeatType: 'loop', duration: speed, ease: 'linear' } }}
+                style={{ willChange: 'transform' }}
+            >
+                {duplicated.map((t, i) => (
+                    <div key={i} className="flex-shrink-0 w-[380px] bg-[#1A1A1A] border border-neutral-800 rounded-xl p-6 flex flex-col justify-between hover:border-[#E8C547]/30 transition-colors duration-300">
+                        <div className="flex gap-1 mb-4">
+                            {[...Array(5)].map((_, j) => <Star key={j} size={14} className="text-[#E8C547]" fill="#E8C547" />)}
+                        </div>
+                        <p className="text-neutral-300 text-sm leading-relaxed flex-1 mb-4">{`"${t.text}"`}</p>
+                        <cite className="text-xs uppercase tracking-widest text-[#E8C547] not-italic font-semibold">{`— ${t.author}`}</cite>
+                    </div>
                 ))}
+            </motion.div>
+        </div>
+    );
+};
+
+const Testimonials = () => {
+    return (
+        <section className="py-24 bg-[#141414] overflow-hidden">
+            <div className="px-6 md:px-20 mb-16 flex items-center justify-between">
+                <h2 className="text-4xl md:text-5xl font-display font-bold">{"Ce qu'ils en disent"}</h2>
+                <div className="flex items-center gap-2 text-[#E8C547]">
+                    <Star size={20} fill="#E8C547" />
+                    <span className="text-2xl font-bold">5.0</span>
+                    <span className="text-neutral-500 text-sm ml-1">/ 17 avis Google</span>
+                </div>
+            </div>
+            <div className="flex flex-col gap-6">
+                <MarqueeRow items={row1} direction="left" speed={60} />
+                <MarqueeRow items={row2} direction="right" speed={50} />
             </div>
         </section>
     );

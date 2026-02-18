@@ -397,12 +397,9 @@ const WhyMe = () => {
 
 // 7. Portfolio Section
 const projects_visual = [
-  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite.jpg" },
-  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/01/avenice.jpg" },
-  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2023/03/beeinvest.jpg" },
-  { id: "laura-dauzonne", title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
-  { id: "kamy-wedding", title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
-  { id: "immosenart", title: "Immosenart", cat: "Immobilier", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop" },
+  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite10.jpg" },
+  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "http://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/01/avenice10-1.jpg" },
+  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "http://www.creation-site-internet-yerres.fr/wp-content/uploads/2023/03/beeinvest10.jpg" },
 ];
 
 const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onClick?: (id: string) => void }> = ({ project, index, onClick }) => {
@@ -448,6 +445,12 @@ const Portfolio = ({ onProjectClick }: { onProjectClick: (id: string) => void })
             {projects_visual.map((project, i) => (
                 <ProjectCard key={i} project={project} index={i} onClick={onProjectClick} />
             ))}
+        </div>
+        <div className="flex justify-center mt-16">
+            <a href="https://www.creation-site-internet-yerres.fr/portfolio/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-lg border border-[#E8C547] text-[#E8C547] rounded-full py-4 px-10 hover:bg-[#E8C547] hover:text-black transition-all duration-300 font-semibold uppercase tracking-wider">
+                <span>Voir toutes les réalisations</span>
+                <ExternalLink size={18} />
+            </a>
         </div>
     </section>
   );
@@ -519,11 +522,11 @@ const Contact = () => {
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-8 mt-16">
-                    <a href="tel:0610724132" className="group flex items-center gap-4 text-xl md:text-2xl border border-neutral-800 rounded-full py-4 px-8 hover:bg-[#E8C547] hover:text-black hover:border-[#E8C547] transition-all duration-300">
+                    <a href="https://wa.me/33610724132" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 text-xl md:text-2xl border border-neutral-800 rounded-full py-4 px-8 hover:bg-[#E8C547] hover:text-black hover:border-[#E8C547] transition-all duration-300">
                         <Phone size={24} />
                         <span>06 10 72 41 32</span>
                     </a>
-                    <a href="mailto:contact@antoine-rousseau.fr" className="group flex items-center gap-4 text-xl md:text-2xl border border-neutral-800 rounded-full py-4 px-8 hover:bg-[#F5F5F5] hover:text-black hover:border-[#F5F5F5] transition-all duration-300">
+                    <a href="mailto:contact@creation-site-web-paris.com" className="group flex items-center gap-4 text-xl md:text-2xl border border-neutral-800 rounded-full py-4 px-8 hover:bg-[#F5F5F5] hover:text-black hover:border-[#F5F5F5] transition-all duration-300">
                         <Mail size={24} />
                         <span>Envoyer un message</span>
                     </a>
@@ -537,11 +540,11 @@ const Contact = () => {
 
             <footer className="flex flex-col md:flex-row justify-between items-end pt-20 border-t border-neutral-900 mt-20 text-neutral-600 text-sm">
                 <div>
-                    <p>© 2024 Antoine Rousseau.</p>
+                    <p>© 2026 Antoine Rousseau.</p>
                     <p>Expertise Web & Solutions Digitales, Paris.</p>
                 </div>
                 <div className="flex gap-6 mt-4 md:mt-0 uppercase tracking-wider">
-                    <a href="#" className="hover:text-[#F5F5F5] transition-colors">Mentions Légales</a>
+                    <a href="#mentions-legales" className="hover:text-[#F5F5F5] transition-colors cursor-pointer mentions-legales-link">Mentions Légales</a>
                     <a href="#" className="hover:text-[#F5F5F5] transition-colors">Plan du site</a>
                 </div>
             </footer>
@@ -947,9 +950,28 @@ const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () =>
   );
 };
 
+// Mentions Legales Page
+const MentionsLegales = ({ onBack }: { onBack: () => void }) => {
+  return (
+    <div className="bg-[#0C0C0C] text-[#F5F5F5] min-h-screen selection:bg-[#E8C547] selection:text-black">
+      <div className="max-w-4xl mx-auto px-6 py-20">
+        <button onClick={onBack} className="flex items-center gap-2 text-neutral-400 hover:text-[#E8C547] transition-colors mb-12 group">
+          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+          <span>Retour</span>
+        </button>
+        <h1 className="text-4xl md:text-5xl font-display font-bold mb-12">Mentions Légales</h1>
+        {/* COLLEZ VOS MENTIONS LEGALES ICI - remplacez le texte ci-dessous */}
+        <div className="prose prose-invert prose-lg max-w-none space-y-6 text-neutral-300 leading-relaxed mentions-legales-content">
+          <p>Cette page est en cours de mise a jour. Veuillez revenir bientot pour consulter les mentions legales completes.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main App ---
 const App = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | { page: 'project'; id: string }>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'mentions-legales' | { page: 'project'; id: string }>('home');
 
   const handleProjectClick = (projectId: string) => {
     setCurrentPage({ page: 'project', id: projectId });
@@ -960,6 +982,25 @@ const App = () => {
     setCurrentPage('home');
     window.scrollTo(0, 0);
   };
+
+  // Handle mentions legales link clicks
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('.mentions-legales-link');
+      if (link) {
+        e.preventDefault();
+        setCurrentPage('mentions-legales');
+        window.scrollTo(0, 0);
+      }
+    };
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
+
+  if (currentPage === 'mentions-legales') {
+    return <MentionsLegales onBack={handleBackToHome} />;
+  }
 
   if (typeof currentPage === 'object' && currentPage.page === 'project') {
     return <ProjectDetail projectId={currentPage.id} onBack={handleBackToHome} />;

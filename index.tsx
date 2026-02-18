@@ -397,12 +397,12 @@ const WhyMe = () => {
 
 // 7. Portfolio Section
 const projects_visual = [
-  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" },
+  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite.jpg" },
+  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/01/avenice.jpg" },
+  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2023/03/beeinvest.jpg" },
   { id: "laura-dauzonne", title: "Laura Dauzonne", cat: "Portfolio / Art", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
   { id: "kamy-wedding", title: "Kamy Wedding", cat: "Event / Paris", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" },
   { id: "immosenart", title: "Immosenart", cat: "Immobilier", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop" },
-  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" },
-  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" },
 ];
 
 const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onClick?: (id: string) => void }> = ({ project, index, onClick }) => {
@@ -415,7 +415,7 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
               ref={ref}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
+              transition={{ duration: 0.8, delay: (index % 3) * 0.15 }}
               className="group"
           >
             <div className="relative overflow-hidden aspect-[4/3] mb-6 rounded-lg">
@@ -444,7 +444,7 @@ const Portfolio = ({ onProjectClick }: { onProjectClick: (id: string) => void })
   return (
     <section id="portfolio" className="py-32 px-6 md:px-20 bg-[#0C0C0C]">
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-20">Projets Récents</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-y-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {projects_visual.map((project, i) => (
                 <ProjectCard key={i} project={project} index={i} onClick={onProjectClick} />
             ))}
@@ -583,9 +583,12 @@ const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () =>
       date: "Mars 2024",
       liveUrl: "https://www.creaboite.fr/",
       images: [
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite10.jpg",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite15.jpg",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite20.jpg",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite25.jpg",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite30.jpg",
+      "https://www.creation-site-internet-yerres.fr/wp-content/uploads/2025/12/creaboite35.jpg",
       ],
       challenge: "Creaboite visait a disrupter le secteur juridique avec une plateforme SaaS accessible aux petits cabinets d'avocats. Le defi etait de creer une UX intuitive pour des utilisateurs peu tech, gerer des donnees sensibles en toute securite, concevoir une facturation flexible et scalable, et etablir la confiance aupres du secteur legal.",
       solution: "J'ai developpe une plateforme entierement sur-mesure: backend scalable avec Node.js, base de donnees PostgreSQL chiffree, API RESTful securisee avec JWT, infrastructure cloud optimisee. Frontend avec interface claire et intuitive, responsive design, tableaux de bord personnalisables et systeme de permissions granulaires. Integrations Stripe, export PDF automatise et webhooks.",

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './src/App';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, Shield, PenTool, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 // 1. Custom Cursor
 const CustomCursor = () => {
@@ -404,18 +405,18 @@ const projects_visual = [
   { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" },
 ];
 
-const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number }> = ({ project, index }) => {
+const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onClick?: (id: string) => void }> = ({ project, index, onClick }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
 
     return (
-        <Link to={`/projects/${project.id}`} className="block group">
+        <div onClick={() => project.id && onClick?.(project.id)} className="block group cursor-pointer">
           <motion.div
               ref={ref}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index % 2 * 0.2 }}
-              className="group cursor-pointer"
+              className="group"
           >
             <div className="relative overflow-hidden aspect-[4/3] mb-6 rounded-lg">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 duration-500" />
@@ -434,18 +435,18 @@ const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string
                     <ArrowRight size={20} className="text-[#E8C547]" />
                 </div>
             </div>
-</motion.div>
-        </Link>
+          </motion.div>
+        </div>
     );
 }
 
-const Portfolio = () => {
+const Portfolio = ({ onProjectClick }: { onProjectClick: (id: string) => void }) => {
   return (
     <section id="portfolio" className="py-32 px-6 md:px-20 bg-[#0C0C0C]">
         <h2 className="text-4xl md:text-5xl font-display font-bold mb-20">Projets Récents</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-y-24">
             {projects_visual.map((project, i) => (
-                <ProjectCard key={i} project={project} index={i} />
+                <ProjectCard key={i} project={project} index={i} onClick={onProjectClick} />
             ))}
         </div>
     </section>
@@ -552,52 +553,138 @@ const Contact = () => {
 const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () => void }) => {
   const projectsData: { [key: string]: any } = {
     'aven-ice-cafe': {
-      title: "AVEN ICE Café",
-      subtitle: "Créer une présence digitale premium pour une micro-entreprise en restauration rapide",
-      client: "AVEN ICE Café",
+      title: "AVEN ICE Cafe",
+      subtitle: "Creer une presence digitale premium pour une micro-entreprise en restauration rapide",
+      client: "AVEN ICE Cafe",
       category: "Site Vitrine + E-Commerce",
-      date: "Décembre 2024",
+      date: "Decembre 2024",
       liveUrl: "https://www.avenicecafe.fr/",
       images: [
         "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1000&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1000&auto=format&fit=crop",
       ],
-      challenge: `AVEN ICE Café est un jeune concept en restauration rapide proposant des gaufres sucrées et salées au sarrasin, ainsi que des glaces fabriquées en Bretagne. Le client avait besoin d'une présence web professionnelle pour:
-
-• Asseoir sa crédibilité auprès des clients potentiels
-• Présenter son offre unique de manière attrayante
-• Faciliter les commandes en ligne et les réservations
-• Se positionner comme une alternative premium aux chaînes standardisées`,
-      solution: `J'ai construit un site sur-mesure combinant design moderne et fonctionnalité e-commerce:
-
-**Design & Branding:**
-- Charte graphique cohérente reflétant l'identité artisanale du concept
-- Photographie professionnelle des produits
-- Interface intuitive optimisée pour mobile
-
-**Fonctionnalités techniques:**
-- Système de commande en ligne intégré
-- Gestion des horaires et disponibilités en temps réel
-- Vitrine produits avec descriptions détaillées
-- Formulaire de réservation pour événements privés
-
-**Performance & SEO:**
-- Optimisation complète pour Google
-- Temps de chargement < 2 secondes
-- Structure SEO pour ranker sur mots-clés stratégiques`,
+      challenge: "AVEN ICE Cafe est un jeune concept en restauration rapide proposant des gaufres sucrees et salees au sarrasin, ainsi que des glaces fabriquees en Bretagne. Le client avait besoin d'une presence web professionnelle pour asseoir sa credibilite, presenter son offre de maniere attrayante, faciliter les commandes en ligne et se positionner comme une alternative premium.",
+      solution: "J'ai construit un site sur-mesure combinant design moderne et fonctionnalite e-commerce: charte graphique coherente, photographie professionnelle, interface intuitive optimisee pour mobile, systeme de commande en ligne integre, gestion des horaires en temps reel, et une optimisation SEO complete pour Google.",
       results: [
         { metric: "+450%", description: "Augmentation du trafic organique en 3 mois" },
-        { metric: "Position 1-3", description: "Sur les mots-clés stratégiques locaux" },
+        { metric: "Position 1-3", description: "Sur les mots-cles strategiques locaux" },
         { metric: "+60 commandes/mois", description: "Via le site uniquement" },
         { metric: "4.8/5", description: "Note moyenne des clients" },
       ],
-      reflection: `Ce projet montre un point crucial: un site ne doit jamais être juste 'beau'. Il doit être un outil de vente réel.
-
-AVEN ICE Café était une micro-entreprise avec un concept unique mais sans visibilité. Après le site, ils ont reçu 60+ commandes mensuelles en ligne et ont pu ouvrir une 2e localisation.
-
-Pourquoi? Parce que j'ai aligné chaque pixel du design sur leurs objectifs business réels.`,
+      reflection: "Ce projet montre un point crucial: un site ne doit jamais etre juste 'beau'. Il doit etre un outil de vente reel. AVEN ICE Cafe etait une micro-entreprise avec un concept unique mais sans visibilite. Apres le site, ils ont recu 60+ commandes mensuelles en ligne et ont pu ouvrir une 2e localisation.",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL", "SEO"],
+    },
+    'creaboite': {
+      title: "Creaboite",
+      subtitle: "SaaS juridique - Plateforme de gestion documentaire pour avocats",
+      client: "Creaboite",
+      category: "SaaS / Legal",
+      date: "Mars 2024",
+      liveUrl: "https://www.creaboite.fr/",
+      images: [
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+      ],
+      challenge: "Creaboite visait a disrupter le secteur juridique avec une plateforme SaaS accessible aux petits cabinets d'avocats. Le defi etait de creer une UX intuitive pour des utilisateurs peu tech, gerer des donnees sensibles en toute securite, concevoir une facturation flexible et scalable, et etablir la confiance aupres du secteur legal.",
+      solution: "J'ai developpe une plateforme entierement sur-mesure: backend scalable avec Node.js, base de donnees PostgreSQL chiffree, API RESTful securisee avec JWT, infrastructure cloud optimisee. Frontend avec interface claire et intuitive, responsive design, tableaux de bord personnalisables et systeme de permissions granulaires. Integrations Stripe, export PDF automatise et webhooks.",
+      results: [
+        { metric: "50+ avocats", description: "Clients actifs en 6 mois" },
+        { metric: "25k/mois", description: "ARR genere" },
+        { metric: "99.9%", description: "Uptime garanti" },
+        { metric: "0 breach", description: "Aucune violation de securite" },
+      ],
+      reflection: "Les produits SaaS reussis ne sont pas beaux - ils resolvent des problemes reels. Creaboite economise aux avocats 10+ heures par mois. C'est ca qui compte.",
+      technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "JWT", "Docker", "AWS"],
+    },
+    'laura-dauzonne': {
+      title: "Laura Dauzonne",
+      subtitle: "Portfolio professionnel pour artiste peintre",
+      client: "Laura Dauzonne",
+      category: "Portfolio / Art",
+      date: "Juillet 2023",
+      liveUrl: "https://www.lauradauzonne.fr/",
+      images: [
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1549887534-7c58238ce678?q=80&w=1000&auto=format&fit=crop",
+      ],
+      challenge: "Laura Dauzonne, artiste peintre emergente, avait besoin de mettre en avant ses oeuvres avec qualite image optimale, vendre ses creations en ligne, etablir sa presence dans le monde de l'art et creer une galerie professionnelle.",
+      solution: "Portfolio minimaliste et haute performance: interface epuree mettant l'art en avant, galerie fullscreen haute resolution, typographie raffinee et coherente. Systeme de vente integre, gestion des stocks et shipping integre avec calcul automatique.",
+      results: [
+        { metric: "15k", description: "Ventes en ligne en 1 an" },
+        { metric: "80%", description: "Trafic organique" },
+        { metric: "5/5", description: "Note moyenne (25+ avis)" },
+      ],
+      reflection: "Les portfolios d'artistes doivent servir le travail, pas le detourner. Ici, chaque element de design supporte la beaute des oeuvres.",
+      technologies: ["React", "TypeScript", "Tailwind", "Stripe", "Vercel"],
+    },
+    'kamy-wedding': {
+      title: "Kamy Wedding",
+      subtitle: "Site vitrine pour wedding planner parisienne",
+      client: "Kamy Wedding",
+      category: "Event / Paris",
+      date: "Septembre 2023",
+      liveUrl: "#",
+      images: [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1000&auto=format&fit=crop",
+      ],
+      challenge: "Kamy Wedding avait besoin d'un site elegant et raffine pour refleter le standing de ses prestations haut de gamme dans l'organisation de mariages a Paris et en Ile-de-France.",
+      solution: "J'ai cree un site vitrine luxueux avec une galerie immersive de realisations, un formulaire de contact personnalise, une section temoignages et une integration Instagram pour le contenu social.",
+      results: [
+        { metric: "+300%", description: "Demandes de devis en ligne" },
+        { metric: "Top 5", description: "Google pour 'wedding planner Paris'" },
+        { metric: "95%", description: "Taux de satisfaction client" },
+      ],
+      reflection: "Dans le secteur du mariage, l'emotion prime. Chaque image, chaque transition doit transporter le visiteur dans un univers de reve.",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel", "SEO"],
+    },
+    'immosenart': {
+      title: "Immosenart",
+      subtitle: "Plateforme immobiliere premium pour le sud de la France",
+      client: "Immosenart",
+      category: "Immobilier",
+      date: "Janvier 2024",
+      liveUrl: "#",
+      images: [
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop",
+      ],
+      challenge: "Immosenart souhaitait se demarquer dans le marche immobilier sature avec une plateforme moderne mettant en valeur des biens haut de gamme dans le sud de la France.",
+      solution: "Plateforme immobiliere sur-mesure avec recherche avancee, fiches bien detaillees avec visite virtuelle, systeme de prise de rendez-vous en ligne et espace agent pour la gestion des biens.",
+      results: [
+        { metric: "+200%", description: "Augmentation des leads qualifies" },
+        { metric: "45s", description: "Temps moyen par visite de fiche" },
+        { metric: "150+", description: "Biens publies en 3 mois" },
+      ],
+      reflection: "L'immobilier haut de gamme necessite une experience utilisateur a la hauteur des biens presentes. La qualite visuelle est non-negociable.",
+      technologies: ["Next.js", "PostgreSQL", "Tailwind CSS", "Mapbox", "Vercel"],
+    },
+    'beeinvest': {
+      title: "Beeinvest",
+      subtitle: "Application fintech pour l'investissement simplifie",
+      client: "Beeinvest",
+      category: "Finance",
+      date: "Novembre 2023",
+      liveUrl: "#",
+      images: [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
+      ],
+      challenge: "Beeinvest voulait democratiser l'investissement financier avec une application web accessible, securisee et pedagogique pour les investisseurs debutants.",
+      solution: "Application web avec dashboard interactif, visualisation de portefeuille en temps reel, systeme de notifications personnalisees, module educatif integre et securite renforcee avec authentification 2FA.",
+      results: [
+        { metric: "2000+", description: "Utilisateurs inscrits en 4 mois" },
+        { metric: "4.7/5", description: "Note sur les stores" },
+        { metric: "85%", description: "Taux de retention mensuel" },
+      ],
+      reflection: "La fintech exige un equilibre parfait entre simplicite d'usage et robustesse technique. La confiance de l'utilisateur se gagne pixel par pixel.",
+      technologies: ["React", "Node.js", "PostgreSQL", "Chart.js", "JWT", "AWS"],
     },
   };
 
@@ -869,6 +956,8 @@ const App = () => {
   if (typeof currentPage === 'object' && currentPage.page === 'project') {
     return <ProjectDetail projectId={currentPage.id} onBack={handleBackToHome} />;
   }
+
+  return (
     <div className="bg-[#0C0C0C] text-[#F5F5F5] selection:bg-[#E8C547] selection:text-black">
       <CustomCursor />
       <Navigation />

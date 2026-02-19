@@ -1073,11 +1073,11 @@ const App = () => {
   }, []);
 
   if (currentPage === 'mentions-legales') {
-    return <MentionsLegales onBack={handleBackToHome} />;
+    return <><CustomCursor /><MentionsLegales onBack={handleBackToHome} /></>;
   }
 
   if (typeof currentPage === 'object' && currentPage.page === 'project') {
-    return <ProjectDetail projectId={currentPage.id} onBack={handleBackToHome} />;
+    return <><CustomCursor /><ProjectDetail projectId={currentPage.id} onBack={handleBackToHome} /></>;
   }
 
   return (

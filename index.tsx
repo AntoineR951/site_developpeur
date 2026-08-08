@@ -87,10 +87,26 @@ const Hero = () => {
   return (
     <section className="h-screen w-full flex flex-col justify-center px-6 md:px-20 relative">
       <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 1.1, ease: [0.6, 0.01, 0, 0.95] }}
+        className="absolute top-0 right-0 h-full w-full md:w-1/2 lg:w-[45%] z-0 pointer-events-none"
+      >
+        <img
+          src="/portrait-antoine.jpg"
+          alt="Portrait d'Antoine Rousseau"
+          className="w-full h-full object-cover object-top"
+        />
+        {/* Dégradés pour fondre le portrait dans le fond noir */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
+      </motion.div>
+
+      <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="max-w-4xl"
+        className="max-w-4xl relative z-10"
       >
         {words.map((word, index) => (
           <motion.span

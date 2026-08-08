@@ -413,9 +413,9 @@ const WhyMe = () => {
 
 // 7. Portfolio Section
 const projects_visual = [
-  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite10.jpg.webp" },
-  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice10-1.jpg.webp" },
-  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest10.jpg.webp" },
+  { id: "creaboite", title: "Creaboite", cat: "SaaS / Légal", img: "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite10.jpg.webp" },
+  { id: "aven-ice-cafe", title: "Aven Ice Café", cat: "Food & Beverage", img: "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice10-1.jpg.webp" },
+  { id: "beeinvest", title: "Beeinvest", cat: "Finance", img: "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest10.jpg.webp" },
 ];
 
 const ProjectCard: React.FC<{ project: { title: string; cat: string; img: string; id?: string }; index: number; onClick?: (id: string) => void }> = ({ project, index, onClick }) => {
@@ -595,11 +595,11 @@ const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () =>
       date: "Decembre 2024",
       liveUrl: "https://www.avenicecafe.fr/",
       images: [
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice10-1.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice15.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice20-1.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice25.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice30-1.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice10-1.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice15.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice20-1.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice25.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/01/avenice30-1.jpg.webp",
       ],
       challenge: "AVEN ICE Cafe est un jeune concept en restauration rapide proposant des gaufres sucrees et salees au sarrasin, ainsi que des glaces fabriquees en Bretagne. Le client avait besoin d'une presence web professionnelle pour asseoir sa credibilite, presenter son offre de maniere attrayante, faciliter les commandes en ligne et se positionner comme une alternative premium.",
       solution: "J'ai construit un site sur-mesure combinant design moderne et fonctionnalite e-commerce: charte graphique coherente, photographie professionnelle, interface intuitive optimisee pour mobile, systeme de commande en ligne integre, gestion des horaires en temps reel, et une optimisation SEO complete pour Google.",
@@ -620,12 +620,12 @@ const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () =>
       date: "Mars 2024",
       liveUrl: "https://www.creaboite.fr/",
       images: [
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite10.jpg.webp",
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite15.jpg.webp",
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite20.jpg.webp",
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite25.jpg.webp",
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite30.jpg.webp",
-      "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite35.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite10.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite15.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite20.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite25.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite30.jpg.webp",
+      "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2025/12/creaboite35.jpg.webp",
       ],
       challenge: "Creaboite visait a disrupter le secteur juridique avec une plateforme SaaS accessible aux petits cabinets d'avocats. Le defi etait de creer une UX intuitive pour des utilisateurs peu tech, gerer des donnees sensibles en toute securite, concevoir une facturation flexible et scalable, et etablir la confiance aupres du secteur legal.",
       solution: "J'ai developpe une plateforme entierement sur-mesure: backend scalable avec Node.js, base de donnees PostgreSQL chiffree, API RESTful securisee avec JWT, infrastructure cloud optimisee. Frontend avec interface claire et intuitive, responsive design, tableaux de bord personnalisables et systeme de permissions granulaires. Integrations Stripe, export PDF automatise et webhooks.",
@@ -712,12 +712,12 @@ const ProjectDetail = ({ projectId, onBack }: { projectId: string; onBack: () =>
       date: "Novembre 2023",
       liveUrl: "#",
       images: [
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest10.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest15.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest20.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest25.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest30.jpg.webp",
-        "https://creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest35.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest10.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest15.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest20.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest25.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest30.jpg.webp",
+        "https://www.creation-site-web-paris.com/wp-content/uploads-webpc/uploads/2023/03/beeinvest35.jpg.webp",
       ],
       challenge: "Beeinvest voulait democratiser l'investissement financier avec une application web accessible, securisee et pedagogique pour les investisseurs debutants.",
       solution: "Application web avec dashboard interactif, visualisation de portefeuille en temps reel, systeme de notifications personnalisees, module educatif integre et securite renforcee avec authentification 2FA.",

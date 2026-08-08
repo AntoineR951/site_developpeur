@@ -87,25 +87,26 @@ const Hero = () => {
   return (
     <section className="h-screen w-full flex flex-col justify-center px-6 md:px-20 relative">
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: -10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.8, ease: [0.6, 0.01, 0, 0.95] }}
-        className="absolute top-24 right-6 md:top-28 md:right-20 z-30"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 1.1, ease: [0.6, 0.01, 0, 0.95] }}
+        className="absolute top-0 right-0 h-full w-full md:w-1/2 lg:w-[45%] z-0 pointer-events-none"
       >
-        <div className="w-24 h-24 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-[#E8C547]/60 shadow-2xl shadow-black/50">
-          <img
-            src="/portrait-antoine.jpg"
-            alt="Portrait d'Antoine Rousseau"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <img
+          src="/portrait-antoine.jpg"
+          alt="Portrait d'Antoine Rousseau"
+          className="w-full h-full object-cover object-top"
+        />
+        {/* Dégradés pour fondre le portrait dans le fond noir */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
       </motion.div>
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="max-w-4xl"
+        className="max-w-4xl relative z-10"
       >
         {words.map((word, index) => (
           <motion.span

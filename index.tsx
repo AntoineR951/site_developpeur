@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, Shield, PenTool, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Star, ExternalLink, Mail, Phone, Code, ShoppingCart, Layers, Settings, ShieldCheck, PenTool, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 // 1. Custom Cursor
 const CustomCursor = () => {
@@ -277,7 +277,7 @@ const services = [
   {
     title: "Dépannage",
     desc: "Réactivité immédiate. Site hacké ou bug critique ? Analyse, diagnostic et résolution de crise.",
-    icon: <Shield size={32} />
+    icon: <ShieldCheck size={32} />
   }
 ];
 

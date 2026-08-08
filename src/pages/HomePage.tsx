@@ -88,6 +88,21 @@ const Hero = () => {
   return (
     <section className="h-screen w-full flex flex-col justify-center px-6 md:px-20 relative">
       <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: -10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.8, ease: [0.6, 0.01, 0, 0.95] }}
+        className="absolute top-24 right-6 md:top-28 md:right-20 z-30"
+      >
+        <div className="w-24 h-24 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-[#E8C547]/60 shadow-2xl shadow-black/50">
+          <img
+            src="/portrait-antoine.jpg"
+            alt="Portrait d'Antoine Rousseau"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
